@@ -60,7 +60,7 @@ class ActionSendEmail(Action):
 		import smtplib 
 		s = smtplib.SMTP('smtp.gmail.com', 587) 
 		s.starttls() 
-		s.login("gajulajagadeesh7@gmail.com", "!V!cky@pgdml@123")
+		s.login("gajulajagadeesh7@gmail.com", "something")
 		message = "The details of all the restaurants you inquried \n \n"
 		global res
 		message = message + res
