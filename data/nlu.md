@@ -70,13 +70,19 @@
 - I'm starving please find a place to eat in [delhi](location)
 - i am starving
 - I can't wait to eat
-- I need some place to eat
+- I need some place to eat in [banglore](location)
 - I want to eat food
 - show me some place in [delhi](location)
 - please show to me some location to eat in [pune](location)
 - Fetch me some places to eat
 - Best rastaurant in [pune](location)
 - Need some food
+- [costly](price:high) in [mumbai](location)
+- [budget](price:mid) friendly restaurants in [jalandhar](location)
+- [cheapest](price:low) restaurants in [banglore](location)
+- find a restaurant with [mid](price) price range in [delhi](location)
+- find me a [american](cuisine) restaurant in delhi
+- show me the [costliest](price:high) hotel in city
 - I am hungry please search place to eat in [pune](location)
 - I am searching for a dinner spot
 - I am looking for some restaurants in [Delhi](location).
@@ -104,15 +110,47 @@
 - [central](location) [indian](cuisine) restaurant
 - please help me to find restaurants in [pune](location)
 - Please find me a restaurantin [bangalore](location)
-- [mumbai](location)
 - show me restaurants
 - please find me [chinese](cuisine) restaurant in [delhi](location)
 - can you find me a [chinese](cuisine) restaurant
-- [delhi](location)
 - please find me a restaurant in [ahmedabad](location)
 - please show me a few [italian](cuisine) restaurants in [bangalore](location)
+- show me restaurant
+- please show me some restaurants in delhi
+- [cheapest](price:low) restaurants in [dharmavaramm](location)
+- find me a [cheapest](price:low) restaurant in [banglore](location)
+- [Italian](cuisine)
+
+## intent:location
 - [banglore](location)
-- [Chinese](cuisine:chinese)
+- [delhi](location)
+- [dharmavaram](location)
+- [pune](location)
+- [jalandhar](location)
+- in [ludhiana](location)
+- at [hyderabad](location)
+- near [vijayawada](location)
+- inside [bombay](location)
+
+## intent:price
+- [cheap](price:low)
+- [costly](price:high)
+- [rich](price:high)
+- [moderate](price:mid)
+- [heavy](price:high)
+- [budget](price:mid)
+- [wealthy](price:high)
+- [grand](price:high)
+- [superb](price:high)
+- [minimal](price:low)
+- [low](price)
+- [medium](price:mid)
+- [normal](price:mid)
+- [pricey](price:high)
+- [usual](price:mid)
+- [least](price:low)
+- [lowest](price:low)
+- [simple](price:mid)
 
 ## synonym:2
 - two
@@ -129,16 +167,37 @@
 - New Delhi
 - dilli
 
-## synonym:bangalore
-- Bengaluru
-
 ## synonym:chinese
 - chines
 - Chinese
 - Chines
 
+## synonym:high
+- costly
+- costliest
+- rich
+- heavy
+- wealthy
+- grand
+- superb
+- pricey
+
+## synonym:low
+- cheapest
+- cheap
+- minimal
+- least
+- lowest
+- low budget
+
 ## synonym:mid
+- budget
 - moderate
+- medium
+- normal
+- usual
+- simple
+- average
 
 ## synonym:vegetarian
 - veggie

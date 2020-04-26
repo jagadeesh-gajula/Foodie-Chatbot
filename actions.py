@@ -1,6 +1,9 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import unicode_literals
+from rasa_sdk.events import AllSlotsReset
+from rasa_sdk.events import Restarted
+
 
 from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
@@ -8,6 +11,8 @@ import zomatopy
 import json
 import cities
 
+
+res=''
 class ActionSearchRestaurants(Action):
 	def name(self):
 		return 'action_search_restaurants'
@@ -37,6 +42,33 @@ class ActionSearchRestaurants(Action):
 			for restaurant in d['restaurants']:
 				response=response+ "Found "+ restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address']+"\n"
 
+		res = response
 		dispatcher.utter_message("-----"+response)
 		return [SlotSet('location',loc)]
+
+
+
+# Send email the list of 10 restaurants
+class ActionSendEmail(Action):
+	def name(self):
+		return 'action_send_email'
+
+	def run(self, dispatcher, tracker, domain):
+		email = tracker.get_slot('email')
+		
+
+		import smtplib 
+		s = smtplib.SMTP('smtp.gmail.com', 587) 
+		s.starttls() 
+		s.login("gajulajagadeesh7@gmail.com", "!V!cky@pgdml@123")
+		message = "The details of all the restaurants you inquried \n \n"
+		global res
+		message = message + res
+		try:
+			s.sendmail("gajulajagadeesh7@gmail.com", str(email), message)
+			s.quit()
+		except:
+			dispatcher.utter_message(email)
+
+		return [AllSlotsReset()]
 

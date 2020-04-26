@@ -1,24 +1,28 @@
 actions:
 - action_search_restaurants
+- action_send_email
 - utter_ask_cuisine
 - utter_ask_howcanhelp
 - utter_ask_location
 - utter_ask_price
 - utter_default
+- utter_email_prompt
 - utter_goodbye
 - utter_greet
 entities:
 - cuisine
+- email
 - location
-- people
 - price
 intents:
+- restaurant_search
 - greet
 - goodbye
-- restaurant_search
 - affirm
+- price
 - not
 - stop
+- location
 responses:
   utter_ask_cuisine:
   - buttons:
@@ -59,6 +63,9 @@ responses:
   - text: I wish i can understand
   - text: apology, I am too naive
   - text: I wish I could help you more.
+  utter_email_prompt:
+  - text: do you want me to email you the results
+  - text: do you want to send top  10 into your email
   utter_goodbye:
   - text: goodbye :(
   - text: Bye-bye
@@ -68,7 +75,7 @@ responses:
   - text: enjoy.
   - text: bye..!
   utter_greet:
-  - text: hello user food is at your fingertips. what do you want 
+  - text: hello user food is at your fingertips. what do you want
   - text: how about ordering something to eat.
   - text: hey there! How may i help you
   - text: Hi, How can I help you!

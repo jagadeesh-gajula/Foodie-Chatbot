@@ -132,15 +132,26 @@
 
 ## interactive_story_1
 * greet
-    - utter_ask_location
-* restaurant_search{"location": "banglore"}
-    - slot{"location": "banglore"}
+    - utter_greet
+* restaurant_search{"price": "low", "location": "dharmavaramm"}
+    - slot{"location": "dharmavaramm"}
+    - slot{"price": "low"}
     - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - utter_ask_price
-    - utter_ask_price
-* goodbye
+* restaurant_search{"cuisine": "Italian"}
+    - slot{"cuisine": "Italian"}
     - action_search_restaurants
-    - slot{"location": "banglore"}
     - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"price": "low", "location": "banglore"}
+    - slot{"location": "banglore"}
+    - slot{"price": "low"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "Italian"}
+    - slot{"cuisine": "Italian"}
+    - action_search_restaurants
+    - utter_goodbye
+    - action_restart
