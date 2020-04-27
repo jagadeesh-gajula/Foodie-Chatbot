@@ -168,6 +168,8 @@ class ActionSendEmail(Action):
 		price = tracker.get_slot('price')
 		res = self.fetch(loc,cuisine,price)
 		email = tracker.get_slot('email')
+		if email == None:
+			email = 'gajulajagadeesh7@gmail.com'
 		s = smtplib.SMTP('smtp.gmail.com', 587) 
 		s.starttls() 
 		s.login("gajulajagadeesh7@gmail.com", "something re")
