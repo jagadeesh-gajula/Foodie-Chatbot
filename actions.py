@@ -7,7 +7,6 @@ from rasa_sdk import Action
 from rasa_sdk.events import SlotSet
 import zomatopy
 import json
-import cities
 import smtplib 
 import pprint, json
 import zomatopy
@@ -17,7 +16,7 @@ import requests
 
 
 
-cities = ['ahmedabad','banglore','bengaluru',' bangalore', 'chennai','madras', 'delhi','new delhi', 'hyderabad',
+cities = ['ahmedabad','bengaluru',' bangalore', 'chennai','madras', 'delhi','new delhi', 'hyderabad',
 		 'kolkata', 'culcatta' ,'mumbai','bombay', 'pune', 'agra', 'ajmer','aligarh', 'amravati','amaravati', 'amritsar',
 		  'asansol', 'aurangabad', 'bareilly', 'belgaum', 'bhavnagar', 'bhiwandi', 'bhopal', 
 		  'bhubaneswar', 'bikaner', 'bilaspur', 'bokaro', 'chandigarh', 'coimbatore', 
@@ -42,7 +41,7 @@ class ActionSearchRestaurants(Action):
 		return 'action_search_restaurants'
 
 
-	def fetch(self,loc='delhi',cuisine='north indian',price='high'):
+	def fetch(self,loc='banglore',cuisine='north indian',price='high'):
 		
 		#adjust the price range
 		price_min = 0
@@ -67,18 +66,18 @@ class ActionSearchRestaurants(Action):
 		loc_detail=zomato.get_location(loc, 1)
 		loc_detail=json.loads(loc_detail)
 		if loc_detail['status'] == 'success':
-			lat = loc_detail['location_suggestions'][0]['latitude']
-			lon = loc_detail['location_suggestions'][0]['longitude']
-			data =  zomato.restaurant_search( query='', latitude=lat, longitude=lon, cuisines=str(cuisines_dict.get(cuisine)), limit=100)
+			data =  zomato.restaurant_search( query='', latitude=loc_detail['location_suggestions'][0]['latitude'], longitude=loc_detail['location_suggestions'][0]['longitude'], cuisines=str(cuisines_dict.get(cuisine)), limit=100)
 			data = json.loads(data)
 			global res
 			if data['results_found'] > 0:
 				added=0
 				for i in data['restaurants']:
 					if i['restaurant']['average_cost_for_two'] > price_min and i['restaurant']['average_cost_for_two'] < price_max and added <= 5:
-						res = res + "\n\nname: "+str(i['restaurant']['location']['address'])+"\naddress :"+str(i['restaurant']['location']['address'])+"\nrating :"+str(i['restaurant']['user_rating']['aggregate_rating'])
+						res = res + "\n\nname: "+str(i['restaurant']['name'])+"\naddress :"+str(i['restaurant']['location']['address'])+"\nrating :"+str(i['restaurant']['user_rating']['aggregate_rating'])
 						added = added +1
-
+				if len(res) == 0:
+					SlotSet('results_found',False)
+					return "no results found"
 			return "here are the results \n\n "+ res
 
 		else:
@@ -92,21 +91,27 @@ class ActionSearchRestaurants(Action):
 		#config={ "user_key":"f4924dc9ad672ee8c4f8c84743301af5"}
 		#zomato = zomatopy.initialize_app(config)
 		loc = tracker.get_slot('location')
+		if loc == None:
+			return dispatcher.utter_message('Location got is None')
 		if loc.lower() not in cities:
 			dispatcher.utter_message("We don't operate in your location")
 			return [AllSlotsReset()]
 		cuisine = tracker.get_slot('cuisine')
 		price = tracker.get_slot('price')
-		res = self.fetch(loc,cuisine,price)
-		if res == 0:
-			dispatcher.utter_message("location is not found")
-			return [AllSlotsReset()]
-		dispatcher.utter_message(res)
-		return [SlotSet('location',loc)]  
+		res=''
+		if cuisine == None or price == None:
+				dispatcher.utter_message("I didn't get all details, deafault results will be shown")
+				cuisine = 'north'
+				price = 'mid'
+		
+		else:
+			res = self.fetch(loc,cuisine,price)
+			dispatcher.utter_message(res+"\n\n\n")
+			 
 
 
 
-# Send email the list of 10 restaurants
+
 class ActionSendEmail(Action):
 	def name(self):
 		return 'action_send_email'
@@ -139,15 +144,17 @@ class ActionSendEmail(Action):
 		if loc_detail['status'] == 'success':
 			lat = loc_detail['location_suggestions'][0]['latitude']
 			lon = loc_detail['location_suggestions'][0]['longitude']
-			data =  zomato.restaurant_search( query='', latitude=lat, longitude=lon, cuisines=str(cuisines_dict.get(cuisine)), limit=100)
+			data =  zomato.restaurant_search( query='', latitude=lat, longitude=lon, cuisines=str(cuisines_dict.get(cuisine)), limit=200)
 			data = json.loads(data)
 			global res
 			if data['results_found'] > 0:
 				added=0
 				for i in data['restaurants']:
 					if i['restaurant']['average_cost_for_two'] > price_min and i['restaurant']['average_cost_for_two'] < price_max and added <= 10:
-						res = res + "\n\nname: "+str(i['restaurant']['location']['address'])+"\naddress :"+str(i['restaurant']['location']['address'])+"\nrating :"+str(i['restaurant']['user_rating']['aggregate_rating'])
+						res = res + "\n\nname: "+str(i['restaurant']['name'])+"\naddress :"+str(i['restaurant']['location']['address'])+"\n cost for 2 people: "+str(i['restaurant']['average_cost_for_two'])+"\nrating :"+str(i['restaurant']['user_rating']['aggregate_rating'])
 						added = added +1
+					if len(res) == 0:
+						return "can't get anything with your preferances"
 
 				return "here are the results \n\n "+ res
 			else:
@@ -161,8 +168,8 @@ class ActionSendEmail(Action):
 
 
 	def run(self, dispatcher, tracker, domain):
-		config={ "user_key":"f4924dc9ad672ee8c4f8c84743301af5"}
-		zomato = zomatopy.initialize_app(config)
+		#config={ "user_key":"f4924dc9ad672ee8c4f8c84743301af5"}
+		#zomato = zomatopy.initialize_app(config)
 		loc = tracker.get_slot('location')
 		cuisine = tracker.get_slot('cuisine')
 		price = tracker.get_slot('price')
@@ -172,14 +179,19 @@ class ActionSendEmail(Action):
 			email = 'gajulajagadeesh7@gmail.com'
 		s = smtplib.SMTP('smtp.gmail.com', 587) 
 		s.starttls() 
-		s.login("gajulajagadeesh7@gmail.com", "something re")
+		try:
+			s.login("gajulajagadeesh7@gmail.com", "!V!cky@pgdml@123")
+		except:
+			dispatcher.utter_message('bad credentials, your preferences deleted')
+			return [AllSlotsReset()]
 		message = "The details of all the restaurants you inquried \n \n"
 		message = message + res
 		try:
 			s.sendmail("gajulajagadeesh7@gmail.com", str(email), message)
 			s.quit()
-			dispatcher.utter_message("Email sent please check your inbox. have a nice day")
+			dispatcher.utter_message("Email sent please check your inbox. your preferances will be deleted ")
+			return [AllSlotsReset()]
 		except:
-			dispatcher.utter_message("Can't send the email. please retry")
+			dispatcher.utter_message("Can't send the email. deleted your preferances")
 			return [AllSlotsReset()]
 

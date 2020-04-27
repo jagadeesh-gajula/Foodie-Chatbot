@@ -14,16 +14,18 @@ entities:
 - cuisine
 - email
 - location
+- not
 - price
 intents:
-- price
-- email
+- affirm
 - restaurant_search
 - greet
-- goodbye
+- email
 - not
+- cuisine
 - location
-- affirm
+- goodbye
+- price
 - stop
 responses:
   utter_ask_cuisine:
@@ -95,16 +97,20 @@ responses:
   - text: give me your email.
   - text: type your email
 session_config:
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
   session_expiration_time: 0
 slots:
   cuisine:
     type: text
   email:
     type: text
+  got_all:
+    type: text
   location:
+    type: text
+  location_valid:
     type: text
   price:
     type: text
-  val_loc:
-    type: text
+  results_found:
+    type: bool

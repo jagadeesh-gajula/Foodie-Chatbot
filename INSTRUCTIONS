@@ -1,0 +1,11 @@
+please replicate environment using command "pip install -r requirements" file
+
+open terminal or command prompt in same directory 
+
+activate environment "source /path_to_source"
+
+re-train the model with command "rasa train --force --config config.yml"
+
+then run command "run shell"
+
+Text with the bot

@@ -1,470 +1,672 @@
-## complete path
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - action_search_restaurants
-    - slot{"location": "delhi"}
-    - utter_goodbye
-    - export
 
-## location specified
+## interactive_story_1
+* goodbye
+    - action_restart
+
+## interactive_story_1
 * greet
     - utter_greet
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - action_search_restaurants
+* goodbye
+
+## interactive_story_1
 * affirm
     - utter_goodbye
-    - export
+    - action_restart
 
-## complete path 2
+## interactive_story_4
 * greet
     - utter_greet
-* restaurant_search
-    - utter_ask_location
+* goodbye
+    - action_restart
+
+## interactive_story_1
+* greet
+    - utter_greet
+* not
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* goodbye
+    - action_restart
+
+## interactive_story_2
+* goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"location": "bengaluru"}
+    - slot{"location": "bengaluru"}
+    - utter_ask_cuisine
+* location{"cuisine": "american"}
+    - slot{"cuisine": "american"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
+    - action_search_restaurants
+    - slot{"location": "bengaluru"}
+    - utter_request_email
+* not
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"location": "bengaluru"}
+    - slot{"location": "bengaluru"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
+    - action_search_restaurants
+    - slot{"got_all": "yes"}
+* affirm
+    - utter_request_email
+* email{"email": "gajulajagadeesh7@gmail.com"}
+    - slot{"email": "gajulajagadeesh7@gmail.com"}
+    - action_send_email
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
 * restaurant_search{"location": "delhi"}
     - slot{"location": "delhi"}
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "North Indian"}
     - slot{"cuisine": "North Indian"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
     - action_search_restaurants
+    - slot{"got_all": "yes"}
+    - utter_email_prompt
+* not
     - utter_goodbye
-
-## complete path 3
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
-* restaurant_search{"location": "italy"}
-    - slot{"location": "italy"}
-	- utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - action_search_restaurants
-* goodbye
-    - utter_goodbye
-
-## complete path 4
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - action_search_restaurants
-    - slot{"location": "delhi"}
-    - export
-
+    - action_restart
 
 ## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"location": "mumbai"}
-    - slot{"location": "mumbai"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
+* restaurant_search{"cuisine": "chinese", "location": "bengaluru"}
     - slot{"cuisine": "chinese"}
+    - slot{"location": "bengaluru"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
     - action_search_restaurants
-    - slot{"location": "mumbai"}
-* stop
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search
-    - utter_ask_location
-* restaurant_search{"location": "mumbai"}
-    - slot{"location": "mumbai"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "Italian"}
-    - slot{"cuisine": "Italian"}
-    - action_search_restaurants
-    - slot{"location": "mumbai"}
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "chinese", "location": "delhi"}
-    - slot{"cuisine": "chinese"}
-    - slot{"location": "delhi"}
-    - action_search_restaurants
-    - slot{"location": "delhi"}
+    - slot{"got_all": "yes"}
+    - utter_email_prompt
 * affirm
-    - utter_goodbye
-    
-    
-## happy_path
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "italian", "location": "mumbai"}
-    - slot{"cuisine": "italian"}
-    - slot{"location": "mumbai"}
-    - action_search_restaurants
-    - slot{"location": "mumbai"}
-* affirm
-    - utter_goodbye
-
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - utter_ask_location
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - action_search_restaurants
-    - slot{"location": "delhi"}
-* affirm
-    - utter_goodbye
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"price": "low", "location": "dharmavaramm"}
-    - slot{"location": "dharmavaramm"}
-    - slot{"price": "low"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "Italian"}
-    - slot{"cuisine": "Italian"}
-    - action_search_restaurants
+    - utter_request_email
+* email{"email": "gajulajagadeesh7@gmail.com"}
+    - slot{"email": "gajulajagadeesh7@gmail.com"}
+    - action_send_email
     - utter_goodbye
     - action_restart
 
 ## interactive_story_1
 * greet
     - utter_greet
-* restaurant_search{"price": "low", "location": "banglore"}
-    - slot{"location": "banglore"}
+* restaurant_search{"price": "low", "location": "bengaluru"}
+    - slot{"location": "bengaluru"}
     - slot{"price": "low"}
     - utter_ask_cuisine
-* restaurant_search{"cuisine": "Italian"}
-    - slot{"cuisine": "Italian"}
+* restaurant_search{"cuisine": "North Indian"}
+    - slot{"cuisine": "North Indian"}
     - action_search_restaurants
+    - utter_email_prompt
+* affirm
+    - action_send_email
     - utter_goodbye
     - action_restart
 
 ## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
+* restaurant_search{"price": "low", "cuisine": "north indian", "location": "new delhi"}
+    - slot{"cuisine": "north indian"}
+    - slot{"location": "new delhi"}
+    - slot{"price": "low"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not{"not": "no"}
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "low", "location": "bengaluru"}
+    - slot{"location": "bengaluru"}
+    - slot{"price": "low"}
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "South Indian"}
     - slot{"cuisine": "South Indian"}
-    - utter_ask_price
-* price{"price": "mid"}
-    - slot{"price": "mid"}
     - action_search_restaurants
-    - slot{"location": "delhi"}
     - utter_email_prompt
-* email{"email": "cherry@gmail.com"}
-    - slot{"email": "cherry@gmail.com"}
+* affirm
+    - utter_request_email
+* email{"email": "srinivas.soma@gmail.com"}
+    - slot{"email": "srinivas.soma@gmail.com"}
     - action_send_email
     - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"location": "delhi"}
+    - slot{"location": "delhi"}
+    - utter_ask_cuisine
+* cuisine{"cuisine": "South Indian"}
+    - slot{"cuisine": "South Indian"}
+    - utter_ask_price
+* price{"price": "low"}
+    - slot{"price": "low"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"cuisine": "italian", "location": "dharmavaram"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "dharmavaram"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
+    - action_search_restaurants
+    - reset_slots
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"location": "delhi"}
+    - slot{"location": "delhi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_price
+* price{"price": "low"}
+    - slot{"price": "low"}
+    - action_search_restaurants
+* goodbye
+    - utter_email_prompt
+* affirm
+    - utter_request_email
+* email{"email": "srinivas.soma@gmail.com"}
+    - slot{"email": "srinivas.soma@gmail.com"}
+    - action_send_email
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "low", "cuisine": "italian", "location": "Delhi"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "Delhi"}
+    - slot{"price": "low"}
+    - action_search_restaurants
+* goodbye
+    - utter_email_prompt
+* email{"email": "vickyviper@protonmail.com"}
+    - slot{"email": "vickyviper@protonmail.com"}
+    - action_send_email
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "high", "location": "Delhi"}
+    - slot{"location": "Delhi"}
+    - slot{"price": "high"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "South Indian"}
+    - slot{"cuisine": "South Indian"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"cuisine": "chinese", "location": "bengaluru"}
+    - slot{"cuisine": "chinese"}
+    - slot{"location": "bengaluru"}
+    - utter_ask_price
+* goodbye{"price": "mid"}
+    - slot{"price": "mid"}
+    - action_search_restaurants
+* restaurant_search
+    - utter_request_email
+* email{"email": "gajulajagadeesh7@gmail.com"}
+    - slot{"email": "gajulajagadeesh7@gmail.com"}
+    - action_send_email
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "high", "location": "dharmavaram"}
+    - slot{"location": "dharmavaram"}
+    - slot{"price": "high"}
+    - utter_ask_cuisine
+* cuisine{"cuisine": "South Indian"}
+    - slot{"cuisine": "South Indian"}
+    - action_search_restaurants
+    - reset_slots
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "low", "cuisine": "italian", "location": "bengaluru"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "bengaluru"}
+    - slot{"price": "low"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not
+    - utter_goodbye
+    - action_restart
 
 ## interactive_story_1
 * greet
     - utter_greet
 * restaurant_search
+    - utter_ask_price
+* goodbye{"price": "mid"}
+    - slot{"price": "mid"}
     - utter_ask_location
-* location{"location": "banglore"}
-    - slot{"location": "banglore"}
+* location{"location": "bengaluru"}
+    - slot{"location": "bengaluru"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "Italian"}
+    - slot{"cuisine": "Italian"}
+    - action_search_restaurants
+    - utter_email_prompt
+* affirm
+    - utter_request_email
+* email{"email": "venkateshdevilvenky@gmail.com"}
+    - slot{"email": "venkateshdevilvenky@gmail.com"}
+    - action_send_email
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"location": "jaipur"}
+    - slot{"location": "jaipur"}
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "South Indian"}
     - slot{"cuisine": "South Indian"}
     - utter_ask_price
 * price{"price": "high"}
+    - slot{"price": "high"}
+    - action_search_restaurants
+* not
+
+## interactive_story_2
+* restaurant_search{"price": "high", "cuisine": "indian", "location": "jaipur"}
+    - slot{"cuisine": "indian"}
+    - slot{"location": "jaipur"}
     - slot{"price": "high"}
     - action_search_restaurants
     - utter_email_prompt
 * not
     - utter_goodbye
-
-## interactive_story_1
-* greet
-    - utter_greet
-* goodbye
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"price": "mid", "cuisine": "indian", "location": "banglore"}
-    - slot{"cuisine": "indian"}
-    - slot{"location": "banglore"}
-    - slot{"price": "mid"}
-    - action_search_restaurants
-    - utter_email_prompt
-    - action_send_email
-    - utter_goodbye
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"price": "low", "location": "banglore"}
-    - slot{"location": "banglore"}
-    - slot{"price": "low"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "Italian"}
-    - slot{"cuisine": "Italian"}
-    - action_search_restaurants
-* affirm
-    - utter_email_prompt
-* email{"email": "srinivas.soma@gmail.com"}
-    - slot{"email": "srinivas.soma@gmail.com"}
-    - action_send_email
-    - utter_goodbye
-
-## interactive_story_1
-* goodbye
-    - utter_goodbye
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"price": "high", "location": "delhi"}
-    - slot{"location": "delhi"}
-    - slot{"price": "high"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "Italian"}
-    - slot{"cuisine": "Italian"}
-    - action_search_restaurants
-    - slot{"location": "delhi"}
-    - utter_email_prompt
-    - action_send_email
-    - utter_goodbye
     - action_restart
 
 ## interactive_story_1
 * greet
     - utter_greet
-* restaurant_search{"price": "mid", "location": "pune"}
-    - slot{"location": "pune"}
-    - slot{"price": "mid"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "North Indian"}
-    - slot{"cuisine": "North Indian"}
-    - action_search_restaurants
-    - utter_email_prompt
-    - utter_request_email
-* email{"email": "cherryjan96@gmail.com"}
-    - slot{"email": "cherryjan96@gmail.com"}
-    - action_send_email
-    - utter_goodbye
+* goodbye
+    - action_restart
 
 ## interactive_story_1
 * greet
     - utter_greet
-* restaurant_search
-    - utter_ask_location
-    - utter_ask_location
 
 ## interactive_story_2
 * greet
     - utter_greet
-* restaurant_search
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_price
+* goodbye{"price": "mid"}
+    - slot{"price": "mid"}
     - utter_ask_location
-* location{"location": "banglore"}
-    - slot{"location": "banglore"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "South Indian"}
-    - slot{"cuisine": "South Indian"}
+* location{"location": "jalandhar"}
+    - slot{"location": "jalandhar"}
+    - action_search_restaurants
+    - utter_email_prompt
+* email{"email": "srinivas.soma@gmail.com"}
+    - slot{"email": "srinivas.soma@gmail.com"}
+    - action_send_email
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "low", "cuisine": "italian", "location": "warangal"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "warangal"}
+    - slot{"price": "low"}
+    - action_search_restaurants
+    - utter_email_prompt
+* affirm
+    - utter_request_email
+* email{"email": "gajulajagadeesh7@gmail.com"}
+    - slot{"email": "gajulajagadeesh7@gmail.com"}
+    - action_send_email
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "low", "cuisine": "american"}
+    - slot{"cuisine": "american"}
+    - slot{"price": "low"}
+    - utter_ask_location
+* restaurant_search{"location": "mumbai"}
+    - slot{"location": "mumbai"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"cuisine": "italian", "location": "dharmavaram"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "dharmavaram"}
+    - utter_ask_price
+* goodbye{"price": "mid"}
+    - slot{"price": "mid"}
+    - action_search_restaurants
+    - reset_slots
+    - utter_email_prompt
+* email{"email": "admin@cpanel.com"}
+    - slot{"email": "admin@cpanel.com"}
+    - action_send_email
+    - reset_slots
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "high", "cuisine": "italian"}
+    - slot{"cuisine": "italian"}
+    - slot{"price": "high"}
+    - utter_ask_location
+* location{"location": "jodhpur"}
+    - slot{"location": "jodhpur"}
+    - action_search_restaurants
+    - slot{"location": "jodhpur"}
+    - slot{"price": "high"}
+    - slot{"cuisine": "italian"}
+    - utter_email_prompt
+* affirm
+    - utter_request_email
+* email{"email": "emantav@gmail.com"}
+    - slot{"email": "emantav@gmail.com"}
+    - action_send_email
+    - reset_slots
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"cuisine": "italian", "location": "bengaluru"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "bengaluru"}
     - utter_ask_price
 * price{"price": "high"}
     - slot{"price": "high"}
     - action_search_restaurants
     - utter_email_prompt
 * affirm
-    - utter_request_email
-* email{"email": "howdy@protonmail.com"}
-    - slot{"email": "howdy@protonmail.com"}
-    - action_send_email
-    - utter_goodbye
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "north indian", "location": "delhi"}
-    - slot{"cuisine": "north indian"}
-    - slot{"location": "delhi"}
-    - utter_ask_price
-* goodbye{"price": "mid"}
-    - slot{"price": "mid"}
-    - action_search_restaurants
-    - utter_email_prompt
     - utter_request_email
 * email{"email": "gajulajagadeesh7@gmail.com"}
     - slot{"email": "gajulajagadeesh7@gmail.com"}
     - action_send_email
     - reset_slots
     - utter_goodbye
+    - action_restart
 
 ## interactive_story_1
-* greet
-    - utter_greet
-* goodbye
+* restaurant_search{"cuisine": "italian", "location": "dharmavram"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "dharmavram"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
+    - action_search_restaurants
+    - slot{"location_valid": "not"}
 
 ## interactive_story_2
-* restaurant_search{"price": "low", "cuisine": "american", "location": "banglore"}
-    - slot{"cuisine": "american"}
-    - slot{"location": "banglore"}
-    - slot{"price": "low"}
+* restaurant_search{"cuisine": "italian", "location": "dharmavram"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "dharmavram"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
     - action_search_restaurants
-    - utter_email_prompt
-    - utter_request_email
-* email{"email": "gajulajagadeesh7@gmail.com"}
-    - slot{"email": "gajulajagadeesh7@gmail.com"}
-    - action_send_email
+    - slot{"location_valid": "not"}
+
+## interactive_story_3
+* restaurant_search{"cuisine": "italian", "location": "dharmavaram"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "dharmavaram"}
+    - utter_ask_price
+* goodbye{"price": "mid"}
+    - slot{"price": "mid"}
+    - action_search_restaurants
+    - reset_slots
     - utter_goodbye
+    - action_restart
 
 ## interactive_story_1
-* restaurant_search{"location": "pune", "price": "low"}
-    - slot{"location": "pune"}
+* greet
+    - utter_greet
+* restaurant_search{"price": "low", "location": "anantapur"}
+    - slot{"location": "anantapur"}
     - slot{"price": "low"}
     - utter_ask_cuisine
-* restaurant_search{"cuisine": "Italian"}
-    - slot{"cuisine": "Italian"}
+* cuisine{"cuisine": "South Indian"}
+    - slot{"cuisine": "South Indian"}
     - action_search_restaurants
-    - slot{"location": "pune"}
-    - utter_email_prompt
-* affirm
-    - action_send_email
+    - reset_slots
     - utter_goodbye
+    - action_restart
 
 ## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "chinese", "location": "banglore", "price": "low", "email": "gajulajagadeesh7@gmail.com"}
-    - slot{"cuisine": "chinese"}
-    - slot{"email": "gajulajagadeesh7@gmail.com"}
-    - slot{"location": "banglore"}
-    - slot{"price": "low"}
-    - action_send_email
-    - utter_goodbye
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "mexican"}
-    - slot{"cuisine": "mexican"}
-    - utter_ask_location
-* location{"location": "banglore"}
-    - slot{"location": "banglore"}
+* restaurant_search{"location": "bengaluru"}
+    - slot{"location": "bengaluru"}
+    - utter_ask_cuisine
+* cuisine{"cuisine": "South Indian"}
+    - slot{"cuisine": "South Indian"}
     - utter_ask_price
 * price{"price": "high"}
     - slot{"price": "high"}
     - action_search_restaurants
     - utter_email_prompt
+* not
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"location": "bengaluru"}
+    - slot{"location": "bengaluru"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_price
+* goodbye{"price": "mid"}
+    - slot{"price": "mid"}
+    - action_search_restaurants
+    - utter_email_prompt
+* affirm
     - utter_request_email
 * email{"email": "gajulajagadeesh7@gmail.com"}
     - slot{"email": "gajulajagadeesh7@gmail.com"}
     - action_send_email
+    - reset_slots
     - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"cuisine": "chinese"}
+    - slot{"cuisine": "chinese"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
+    - utter_ask_location
+* location{"location": "bengaluru"}
+    - slot{"location": "bengaluru"}
+    - action_search_restaurants
+    - utter_email_prompt
+* email{"email": "gajulajadageesh7@gmail.com"}
+    - slot{"email": "gajulajadageesh7@gmail.com"}
+    - action_send_email
+    - reset_slots
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"cuisine": "italian"}
+    - slot{"cuisine": "italian"}
+    - utter_ask_price
+* goodbye{"price": "mid"}
+    - slot{"price": "mid"}
+    - utter_ask_location
+* location{"location": "bengaluru"}
+    - slot{"location": "bengaluru"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"cuisine": "italian"}
+    - slot{"cuisine": "italian"}
+    - utter_ask_price
+* price{"price": "high"}
+    - slot{"price": "high"}
+    - utter_ask_location
+* location{"location": "dharmavaram"}
+    - slot{"location": "dharmavaram"}
+    - action_search_restaurants
+    - reset_slots
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "low"}
+    - slot{"price": "low"}
+    - utter_ask_location
+* location{"location": "culcutta"}
+    - slot{"location": "culcutta"}
+    - utter_ask_cuisine
+* cuisine{"cuisine": "North Indian"}
+    - slot{"cuisine": "North Indian"}
+    - action_search_restaurants
+    - reset_slots
+    - utter_goodbye
+    - action_restart
 
 ## interactive_story_1
 * greet
     - utter_greet
-* restaurant_search{"price": "mid", "location": "delhi"}
-    - slot{"location": "delhi"}
+* restaurant_search{"price": "low"}
+    - slot{"price": "low"}
+    - utter_ask_price
+* goodbye{"price": "mid"}
     - slot{"price": "mid"}
+
+## interactive_story_2
+* greet
+    - utter_greet
+* restaurant_search{"price": "low"}
+    - slot{"price": "low"}
+    - utter_ask_location
+* location{"location": "jaipur"}
+    - slot{"location": "jaipur"}
+    - utter_ask_cuisine
+* location{"cuisine": "american"}
+    - slot{"cuisine": "american"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not{"not": "never"}
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "low"}
+    - slot{"price": "low"}
+    - utter_ask_location
+* location{"location": "jodhpur"}
+    - slot{"location": "jodhpur"}
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "South Indian"}
     - slot{"cuisine": "South Indian"}
     - action_search_restaurants
-    - slot{"location": "delhi"}
-    - slot{"val_loc": "True"}
     - utter_email_prompt
-    - action_send_email
-    - utter_email_prompt
-    - utter_request_email
-
-## interactive_story_2
-* greet
-    - utter_greet
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - utter_ask_price
-* price{"price": "mid"}
-    - slot{"price": "mid"}
-    - action_search_restaurants
-    - slot{"location": "delhi"}
-    - slot{"val_loc": "True"}
-    - utter_email_prompt
-* not
-    - utter_goodbye
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"price": "american"}
-    - slot{"price": "american"}
-    - utter_ask_price
-* price{"price": "mid"}
-    - slot{"price": "mid"}
-    - action_search_restaurants
-    - slot{"val_loc": "False"}
-    - utter_email_prompt
-    - utter_email_prompt
-    - utter_request_email
-* not
-
-## interactive_story_2
-* greet
-    - utter_greet
-* restaurant_search{"cuisine": "chinese", "location": "delhi"}
-    - slot{"cuisine": "chinese"}
-    - slot{"location": "delhi"}
-    - utter_ask_price
-* price{"price": "high"}
-    - slot{"price": "high"}
-    - action_search_restaurants
-    - slot{"val_loc": "False"}
-    - utter_goodbye
-* goodbye
-
-## interactive_story_1
-* greet
-    - utter_greet
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
-    - utter_ask_cuisine
-* restaurant_search{"cuisine": "chinese"}
-    - slot{"cuisine": "chinese"}
-    - utter_ask_price
-* price{"price": "high"}
-    - slot{"price": "high"}
-    - action_search_restaurants
-    - slot{"val_loc": "False"}
-
-## interactive_story_2
-* restaurant_search{"cuisine": "chinese", "location": "delhi"}
-    - slot{"cuisine": "chinese"}
-    - slot{"location": "delhi"}
-    - utter_ask_price
-* price{"price": "high"}
-    - slot{"price": "high"}
-    - action_search_restaurants
-    - utter_email_prompt
+* affirm
     - utter_request_email
 * email{"email": "gajulajagadeesh7@gmail.com"}
     - slot{"email": "gajulajagadeesh7@gmail.com"}
     - action_send_email
+    - reset_slots
     - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "high"}
+    - slot{"price": "high"}
+    - utter_ask_location
+* location{"location": "varanasi"}
+    - slot{"location": "varanasi"}
+    - utter_ask_cuisine
+* restaurant_search{"cuisine": "South Indian"}
+    - slot{"cuisine": "South Indian"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* restaurant_search{"price": "low"}
+    - slot{"price": "low"}
+    - utter_ask_location
+* location{"location": "jhansi"}
+    - slot{"location": "jhansi"}
+    - utter_ask_cuisine
+* cuisine{"cuisine": "North Indian"}
+    - slot{"cuisine": "North Indian"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"price": "low", "cuisine": "mexican", "location": "jodhpur"}
+    - slot{"cuisine": "mexican"}
+    - slot{"location": "jodhpur"}
+    - slot{"price": "low"}
+    - action_search_restaurants
+    - utter_email_prompt
+* not
+    - utter_goodbye
+    - action_restart
+
+## interactive_story_1
+* greet
+    - utter_greet
+* restaurant_search{"price": "high", "cuisine": "italian", "location": "mumbai"}
+    - slot{"cuisine": "italian"}
+    - slot{"location": "mumbai"}
+    - slot{"price": "high"}
+    - action_search_restaurants
+    - utter_email_prompt
+* affirm
+    - utter_request_email
+* email{"email": "gajulajagadeesh7@gmail.com"}
+    - slot{"email": "gajulajagadeesh7@gmail.com"}
+    - action_send_email
+    - reset_slots
+    - utter_goodbye
+    - action_restart
