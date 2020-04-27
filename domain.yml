@@ -9,31 +9,37 @@ actions:
 - utter_email_prompt
 - utter_goodbye
 - utter_greet
+- utter_request_email
 entities:
 - cuisine
 - email
 - location
 - price
 intents:
+- price
+- email
 - restaurant_search
 - greet
 - goodbye
-- affirm
-- price
 - not
-- stop
 - location
+- affirm
+- stop
 responses:
   utter_ask_cuisine:
   - buttons:
     - payload: Chinese
-      title: Chinese
+      title: chinese
     - payload: Italian
       title: Italian
     - payload: South Indian
       title: South Indian
     - payload: North Indian
       title: North Indian
+    - payload: american
+      title: American
+    - payload: mexican
+      title: Mexican
     text: what kind of cuisine would you like?
   utter_ask_howcanhelp:
   - text: how can I help you?
@@ -84,13 +90,21 @@ responses:
   - text: Greetings user.! how may i help you
   - text: how is your day?, tell me what do you want
   - text: good day today. ask something
+  utter_request_email:
+  - text: please enter your email
+  - text: give me your email.
+  - text: type your email
 session_config:
   carry_over_slots_to_new_session: true
   session_expiration_time: 0
 slots:
   cuisine:
     type: text
+  email:
+    type: text
   location:
     type: text
   price:
+    type: text
+  val_loc:
     type: text

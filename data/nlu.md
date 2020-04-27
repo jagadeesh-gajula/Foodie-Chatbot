@@ -17,6 +17,7 @@
 - very true
 - true
 - yes please
+- thank you
 
 ## intent:not
 - nah
@@ -44,6 +45,7 @@
 - Bye bye
 - have a good one
 - mid
+- bye bye
 
 ## intent:greet
 - hey
@@ -54,6 +56,10 @@
 - good morning
 - good evening
 - dear sir
+- how are you
+- good day
+- how are you today
+- hello bot
 
 ## intent:restaurant_search
 - i'm looking for a place to eat
@@ -119,7 +125,27 @@
 - please show me some restaurants in delhi
 - [cheapest](price:low) restaurants in [dharmavaramm](location)
 - find me a [cheapest](price:low) restaurant in [banglore](location)
-- [Italian](cuisine)
+- find me best restaurants in [delhi](location)
+- i want something to eat
+- low [budget](price:mid) restaurants in south [indian](cuisine) [banglore](location)
+- [cheapest](price:low) restaurant in [banglore](location)
+- [costly](price:high) restaurant in [delhi](location)
+- low [budget](price:mid) restarant in [pune](location)
+- i want to order some food
+- order some food
+- please find me [north indian](cuisine) restaurant in [delhi](location)
+- find me [cheapest](price:low)[ american](cuisine) restaurant in [banglore](location)
+- i want to find restaurant in [pune](location) with [cheapest](price:low) price
+- please find [chinese](cuisine) restaurant in [banglore](location) with [low](price) price and email to [gajulajagadeesh7@gmail.com](email)
+- want to eat [mexican](cuisine) food
+- [budget](price:mid) friendly restaurants in [delhi](location)
+- hello bot can restaurants in [delhi](location)
+- find me a restaurant in [delhi](location)
+- [american](price)
+- find me [chinese](cuisine) restaurant in [delhi](location)
+- please  find me best restaurant in [delhi](location)
+- [Chinese](cuisine:chinese)
+- best [chinese](cuisine) restaurant in [delhi](location) at low price
 
 ## intent:location
 - [banglore](location)
@@ -133,17 +159,19 @@
 - inside [bombay](location)
 
 ## intent:price
-- [cheap](price:low)
-- [costly](price:high)
+- [low](price)
+- [mid](price)
+- [high](price)
+- very [cheap](price:low)
+- very [costly](price:high)
 - [rich](price:high)
 - [moderate](price:mid)
 - [heavy](price:high)
-- [budget](price:mid)
+- minimum [budget](price:mid)
 - [wealthy](price:high)
 - [grand](price:high)
 - [superb](price:high)
 - [minimal](price:low)
-- [low](price)
 - [medium](price:mid)
 - [normal](price:mid)
 - [pricey](price:high)
@@ -151,6 +179,25 @@
 - [least](price:low)
 - [lowest](price:low)
 - [simple](price:mid)
+- [high](price)
+
+## intent:email
+- ['example@example.com](email)
+- myemail [hello@gmail.com](email)
+- to [jagadeesh@gmail.com](email)
+- [vicky@protonmail.com](email)
+- [admin@india.net](email)
+- [example@yahoomail.com](email)
+- send to [foodie@hotmail.com](email)
+- forward to [srinivas@somemail.com](email)
+- email to [someone@mailme.net](email)
+- [admins@iiitb.net](email)
+- [cherry@gmail.com](email)
+- [srinivas.soma@gmail.com](email)
+- [cherryjan96@gmail.com](email)
+- [howdy@protonmail.com](email)
+- [gajulajagadeesh7@gmail.com](email)
+- [gajulajagadeesh7@gmail.com](email)
 
 ## synonym:2
 - two

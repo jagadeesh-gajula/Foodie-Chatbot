@@ -31,4 +31,6 @@ d = json.loads(results)
 
 
 x = d['restaurants'][0]
-print(x['restaurant']['R'])
+for i in x['restaurant'].keys():
+    print(i)
+    
